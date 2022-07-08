@@ -56,20 +56,6 @@ export function writeFile(path, buffer) {
 }
 
 /**
- * This is intended for use in web browsers to load files written by the various HDF5 utilities.
- * Node applications should not call this function;
- * rather, they can just read directly from the real file system.
- *
- * @param {string} path - Path to a file on the virtual file system.
- *
- * @return {Uint8Array} Binary contents of the file.
- */
-export function readFile(path) {
-    throw new Error("not supported in Node.js context"); /** NODE ONLY **/
-    return cache.module.FS.readFile(path, { encoding: 'binary' });
-}
-
-/**
  * This is intended for use in web browsers to clean up after {@linkcode writeFile}.
  * Node applications should not call this function.
  *

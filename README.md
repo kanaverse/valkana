@@ -22,6 +22,9 @@ va.validateState(
 
 This will raise an error if the state file does not satisfy the [specification](https://ltla.github.io/kanaval).
 
+Web applications will need to make sure that the HDF5 file is saved on **valkana**'s virtual filesystem via the `writeFile()` function.
+See the [reference documentation](https://ltla.github.io/valkana) for more details.
+
 ## Developer notes
 
 This package compiles the **kanaval** library to WebAssembly for execution in typical Javascript environments (e.g., browser/Node.js).
