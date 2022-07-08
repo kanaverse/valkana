@@ -5,14 +5,18 @@ name: Test JS bindings
 jobs:
   test-js:
     runs-on: ubuntu-latest
+    container: ghcr.io/ltla/valkana/builder:latest
+    defaults:
+      run:
+        working-directory: /valkana
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Get to the right branch
+      run: |
+        git fetch --all
+        git checkout $GITHUB_SHA
 
-    - name: Set up Node
-      uses: actions/setup-node@v2
-
-    - name: Create node build 
+    - name: Update node build 
       run: bash build.sh main
 
     - name: Update NPM packages
