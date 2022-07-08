@@ -1,0 +1,8 @@
+*.swp
+build_*
+main/
+browser/
+js/wasm/
+docs/built
+node_modules
+package-lock.json

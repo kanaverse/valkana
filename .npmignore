@@ -1,0 +1,9 @@
+build*
+docs/
+extern/
+js/
+src/
+tests/
+misc/
+.github
+CMakeLists.txt

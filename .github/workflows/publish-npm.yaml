@@ -1,0 +1,60 @@
+on:
+  workflow_run:
+    workflows: [Test JS bindings]
+    types: [completed]
+    branches: [master]
+
+name: Build and publish to NPM 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    # We run the various preparatory steps to ensure that they do, in fact, run.
+    # This avoids nasty surprises when we actually do want to publish something.
+    - name: Update node build 
+      run: bash build.sh main
+
+    - name: Update module build
+      run: bash build.sh module
+
+    - name: Update NPM packages
+      run: npm i --include=dev
+
+    # We only run the remaining (remote-touching) steps if the version has actually changed.
+    - name: Extract package versions
+      shell: bash
+      run: |
+        current_version=$(cat package.json | grep "version" | sed -e 's/.*"\([0-9\.]*\)".*/\1/')
+        echo "NEW_VALKANA_VERSION=${current_version}" >> $GITHUB_ENV
+        old_version=$(npm view valkana version)
+        update=0 && [[ $old_version != $current_version ]] && update=1
+        echo "UPDATE_VALKANA=${update}" >> $GITHUB_ENV
+        echo "Current version is ${current_version} (published ${old_version})"
+
+    - uses: actions/setup-node@v2
+      if: env.UPDATE_VALKANA == 1
+      with:
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Publish to NPM
+      if: env.UPDATE_VALKANA == 1
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Tagging the release
+      if: env.UPDATE_VALKANA == 1
+      uses: actions/github-script@v5
+      with:
+        script: |
+          github.rest.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: 'refs/tags/' + process.env.NEW_VALKANA_VERSION,
+            sha: context.sha
+          })
