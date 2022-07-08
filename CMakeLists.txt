@@ -16,7 +16,7 @@ add_executable(
 )
 
 target_compile_options(
-    valkana_wasm PUBLIC -O3
+    valkana_wasm PUBLIC -O3 -fexceptions
 )
 
 target_link_libraries(
@@ -27,7 +27,7 @@ target_link_libraries(
 
 set_target_properties(valkana_wasm PROPERTIES 
     OUTPUT_NAME valkana
-    LINK_FLAGS "-O3 --bind -s ALLOW_MEMORY_GROWTH=1 -s MAXIMUM_MEMORY=4GB -s USE_ZLIB=1 -s MODULARIZE=1 -s EXPORT_NAME=loadValkana -s EXPORT_ES6"
+    LINK_FLAGS "-O3 --bind -fexceptions -s ALLOW_MEMORY_GROWTH=1 -s MAXIMUM_MEMORY=4GB -s USE_ZLIB=1 -s MODULARIZE=1 -s EXPORT_NAME=loadValkana -s EXPORT_ES6"
 )
 
 set(COMPILE_NODE OFF CACHE BOOL "Compile for Node.js")
