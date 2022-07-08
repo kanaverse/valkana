@@ -6,7 +6,8 @@
     "main": "main/index.js",
     "browser": "browser/index.js",
     "scripts": {
-        "jsdoc": "npx jsdoc -r js -d docs/built -c docs/jsdoc.config.json"
+        "test": "node --experimental-vm-modules --experimental-wasm-threads --experimental-wasm-bigint node_modules/jest/bin/jest.js",
+        "jsdoc": "npx jsdoc -r js README.md -d docs/built -c docs/jsdoc.config.json"
     },
     "author": {
         "name": "Aaron Lun",
@@ -21,6 +22,8 @@
     ],
     "devDependencies": {
         "docdash": "^1.2.0",
+        "h5wasm": "^0.4.4",
+        "jest": "^28.1.2",
         "jsdoc": "^3.6.10"
     }
 }

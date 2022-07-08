@@ -6,3 +6,4 @@ js/wasm/
 docs/built
 node_modules
 package-lock.json
+TEST-*

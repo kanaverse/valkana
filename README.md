@@ -28,7 +28,13 @@ This package compiles the **kanaval** library to WebAssembly for execution in ty
 Building the Wasm binary requires the [Emscripten toolchain](https://emscripten.org) and a recent version of [CMake](https://cmake.org).
 Once these are installed, we can simply do:
 
-```bash
+```sh
 ./build.sh main
 ./build.sh browser
+```
+
+Testing usually involves some combination of these flags:
+
+```sh
+node --experimental-vm-modules --experimental-wasm-bulk-memory --experimental-wasm-bigint node_modules/jest/bin/jest.js
 ```
