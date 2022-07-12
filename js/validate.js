@@ -2,7 +2,7 @@ import * as wasm from "./wasm.js";
 
 /**
  * Validate the HDF5 state file containing the analysis parameters and results.
- * It is assumed that the HDF5 state file has already been extracted from the kana file,
+ * It is assumed that the HDF5 state file has already been extracted from the `*.kana` file,
  * e.g., using **bakana**'s `parseKanaFile` function.
  *
  * @param {string} path - Path to the HDF5 file.

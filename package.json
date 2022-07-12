@@ -18,7 +18,10 @@
     "repository": "github:LTLA/valkana",
     "bugs": "https://github.com/LTLA/valkana/issues",
     "keywords": [
-        "single-cell"
+        "bioinformatics",
+        "scRNA-seq",
+        "single-cell",
+        "webassembly"
     ],
     "devDependencies": {
         "docdash": "^1.2.0",

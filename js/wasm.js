@@ -10,7 +10,7 @@ const cache = {};
  *
  * @return {boolean}
  * The Wasm bindings are initialized and `true` is returned.
- * If the bindings were already initialized (e.g., by a previous call), nothing is done and `false` is returned.
+ * If the bindings were already initialized (e.g., by a previous call to `initialize`), nothing is done and `false` is returned.
  */
 export async function initialize({ localFile = false } = {}) {
     let options = {};

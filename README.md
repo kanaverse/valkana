@@ -8,7 +8,7 @@ We created a separate package rather than attempting to bundle the Wasm files in
 
 ## Quick start
 
-We assume that the `*.kana` file has been split into the HDF5 file, e.g., using **bakana**'s `parseKanaFile()` function.
+We assume that the `*.kana` file has been parsed to obtain the embedded HDF5 file, e.g., using **bakana**'s `parseKanaFile()` function.
 
 ```js
 import * as va from "valkana";
