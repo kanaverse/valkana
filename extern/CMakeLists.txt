@@ -15,7 +15,7 @@ include(FetchContent)
 FetchContent_Declare(
   kanaval
   GIT_REPOSITORY https://github.com/LTLA/kanaval
-  GIT_TAG 50003d7cfd3726f787895a6142e55f5141f5deb0
+  GIT_TAG 86cfdb359f25d047c0beb6c93e081194cdf5bba0
 )
 FetchContent_MakeAvailable(kanaval)
 
