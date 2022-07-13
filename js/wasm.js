@@ -1,4 +1,5 @@
 import loadValkana from "./wasm/valkana.js";
+import * as wa from "wasmarrays.js";
 
 const cache = {};
 
@@ -19,6 +20,7 @@ export async function initialize({ localFile = false } = {}) {
     }                                                                               /** NODE ONLY **/
 
     cache.module = await loadValkana(options);
+    cache.space = wa.register(cache.module);
 }
 
 export function call(func) {
@@ -37,6 +39,13 @@ export function call(func) {
         }
     }
     return output;
+}
+
+export function wasmArraySpace() {
+    if (! ("space" in cache)) {
+        throw new Error("Wasm module needs to be initialized via 'initialize()'");
+    }
+    return cache.space;
 }
 
 /**
