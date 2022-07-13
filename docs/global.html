@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/LTLA/valkana" target="_blank" class="menu-item" id="repository" >Github repo</a></h2><h3>Global</h3><ul><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#initialize">initialize</a></li><li><a href="global.html#removeFile">removeFile</a></li><li><a href="global.html#validateState">validateState</a></li><li><a href="global.html#writeFile">writeFile</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/LTLA/valkana" target="_blank" class="menu-item" id="repository" >Github repo</a></h2><h3>Global</h3><ul><li><a href="global.html#fileExists">fileExists</a></li><li><a href="global.html#initialize">initialize</a></li><li><a href="global.html#removeFile">removeFile</a></li><li><a href="global.html#validateAdtQualityControlState">validateAdtQualityControlState</a></li><li><a href="global.html#validateCombineEmbeddingsState">validateCombineEmbeddingsState</a></li><li><a href="global.html#validateInputsState">validateInputsState</a></li><li><a href="global.html#validateQualityControlState">validateQualityControlState</a></li><li><a href="global.html#validateState">validateState</a></li><li><a href="global.html#writeFile">writeFile</a></li></ul>
 </nav>
 
 <div id="main">
@@ -138,7 +138,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line79">line 79</a>
+        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -297,7 +297,7 @@ Node applications should not call this function.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line15">line 15</a>
+        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -535,7 +535,7 @@ If the bindings were already initialized (e.g., by a previous call to <code>init
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line66">line 66</a>
+        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -670,6 +670,897 @@ Node applications should not call this function.</p>
 
     
 
+    <h4 class="name" id="validateAdtQualityControlState"><span class="type-signature"></span>validateAdtQualityControlState<span class="signature">(path, numCells, numSamples, inUse, version)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="validate.js.html">validate.js</a>, <a href="validate.js.html#line68">line 68</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Only validate the <code>adt_quality_control</code> group of the HDF5 state file.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Path to the HDF5 file.
+On browsers, this should reside in the virtual filesystem.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numCells</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Number of cells in the dataset, prior to any filtering.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numSamples</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Number of samples (i.e., batches) in the dataset.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inUse</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether ADTs are available in the dataset.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Version of the kana file, as an <code>XXXYYYZZZ</code> integer for version <code>XXX.YYY.ZZZ</code>,
+e.g., 1001000 for version 1.1.0.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An error is raised if the <code>adt_quality_control</code> group is invalid.</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="validateCombineEmbeddingsState"><span class="type-signature"></span>validateCombineEmbeddingsState<span class="signature">(path, numCells, modalities, totalDims, version)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="validate.js.html">validate.js</a>, <a href="validate.js.html#line86">line 86</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Only validate the <code>combine_embeddings</code> group of the HDF5 state file.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Path to the HDF5 file.
+On browsers, this should reside in the virtual filesystem.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numCells</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Number of cells in the dataset after filtering.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>modalities</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Names of all modalities involved.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>totalDims</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Total number of embedding dimensions, summed across all modalities.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Version of the kana file, as an <code>XXXYYYZZZ</code> integer for version <code>XXX.YYY.ZZZ</code>,
+e.g., 1001000 for version 1.1.0.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An error is raised if the <code>combine_embeddings</code> group is invalid.</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="validateInputsState"><span class="type-signature"></span>validateInputsState<span class="signature">(path, embedded, version)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="validate.js.html">validate.js</a>, <a href="validate.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Only validate the <code>inputs</code> group of the HDF5 state file.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Path to the HDF5 file.
+On browsers, this should reside in the virtual filesystem.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>embedded</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the input files were embedded or linked into the file.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Version of the kana file, as an <code>XXXYYYZZZ</code> integer for version <code>XXX.YYY.ZZZ</code>,
+e.g., 1001000 for version 1.1.0.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An error is raised if the <code>inputs</code> group is invalid.</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="validateQualityControlState"><span class="type-signature"></span>validateQualityControlState<span class="signature">(path, numCells, numSamples, version)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="validate.js.html">validate.js</a>, <a href="validate.js.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>Only validate the <code>quality_control</code> group of the HDF5 state file.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Path to the HDF5 file.
+On browsers, this should reside in the virtual filesystem.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numCells</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Number of cells in the dataset, prior to any filtering.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>numSamples</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Number of samples (i.e., batches) in the dataset.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>version</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Version of the kana file, as an <code>XXXYYYZZZ</code> integer for version <code>XXX.YYY.ZZZ</code>,
+e.g., 1001000 for version 1.1.0.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>An error is raised if the <code>quality_control</code> group is invalid.</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="validateState"><span class="type-signature"></span>validateState<span class="signature">(path, embedded, version)</span><span class="type-signature"></span></h4>
 
     
@@ -682,7 +1573,7 @@ Node applications should not call this function.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="validate.js.html">validate.js</a>, <a href="validate.js.html#line16">line 16</a>
+        <a href="validate.js.html">validate.js</a>, <a href="validate.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -878,7 +1769,7 @@ e.g., 1001000 for version 1.1.0.</p></td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line52">line 52</a>
+        <a href="wasm.js.html">wasm.js</a>, <a href="wasm.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -1052,7 +1943,7 @@ rather, they can just read directly from the real file system.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Tue Jul 12 2022 06:18:00 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed Jul 13 2022 21:03:02 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
