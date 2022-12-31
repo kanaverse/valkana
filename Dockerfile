@@ -7,7 +7,7 @@ RUN apt-get update && \
 RUN git clone https://github.com/emscripten-core/emsdk.git && \
     cd emsdk && \
     ./emsdk install 3.1.8 && \
-    ./emsdk activate 3.1.8 
+    ./emsdk activate 3.1.8
 
 # Grabbing CMake.
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.22.2/cmake-3.22.2-linux-x86_64.sh -O cmake_install.sh && \
@@ -15,13 +15,14 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.22.2/cmake-3.22.2
     bash cmake_install.sh --prefix=cmake --skip-license && \
     rm cmake_install.sh
 
-ENV PATH="/emsdk:/emsdk/node/14.18.2_64bit/bin:/emsdk/upstream/emscripten:/cmake/bin:${PATH}"
+# Temporarily adding Node to the path.
+ENV FINALPATH="/emsdk:/emsdk/upstream/emscripten:/cmake/bin:${PATH}"
+ENV PATH="/emsdk/node/14.18.2_64bit/bin:${FINALPATH}"
 
 RUN git clone https://github.com/LTLA/valkana
-
 WORKDIR valkana
 
-# Grabbing the node modules (happily enough, npm is installed along with emscripten).
+# Grabbing the node modules.
 RUN npm i --include=dev
 
 # Revert any NPM-induced changes to these files.
@@ -30,3 +31,6 @@ RUN git checkout -- package.json
 # Running the builds.
 RUN ./build.sh main
 RUN ./build.sh browser
+
+# Removing emscripten's Node from the path.
+ENV PATH="${FINALPATH}"
