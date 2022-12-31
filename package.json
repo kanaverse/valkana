@@ -1,12 +1,12 @@
 {
     "name": "valkana",
-    "version": "0.0.4",
+    "version": "1.0.0-alpha.1",
     "description": "Validate the output files produced by the bakana single-cell analysis pipelines.",
     "type": "module",
     "main": "main/index.js",
     "browser": "browser/index.js",
     "scripts": {
-        "test": "node --experimental-vm-modules --experimental-wasm-threads --experimental-wasm-bigint node_modules/jest/bin/jest.js",
+        "test": "NODE_OPTIONS='--experimental-vm-modules' npx jest",
         "jsdoc": "npx jsdoc -r js README.md -d docs/built -c docs/jsdoc.config.json"
     },
     "author": {
