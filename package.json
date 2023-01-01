@@ -1,6 +1,6 @@
 {
     "name": "valkana",
-    "version": "1.0.0-alpha.2",
+    "version": "1.0.0-alpha.3",
     "description": "Validate the output files produced by the bakana single-cell analysis pipelines.",
     "type": "module",
     "main": "main/index.js",
